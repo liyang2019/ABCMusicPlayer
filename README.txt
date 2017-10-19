@@ -7,7 +7,7 @@ INSTRUCTION
 
 2. Input a file name of .abc music file, the .abc file must be in folder src/songs, the application will display the contents of the .abc music file in the upper panel.
 
-3. Press the parse button, , the application will display the contents of the parsed phrase of the .abc music file in the lower panel.
+3. Press the parse button, the application will display the contents of the parsed phrase of the .abc music file in the lower panel.
    
 4. Press the play button, the application will start to play the music.
 
