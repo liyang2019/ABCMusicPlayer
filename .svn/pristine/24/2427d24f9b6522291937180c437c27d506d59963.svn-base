@@ -1,0 +1,7 @@
+package view;
+
+public interface IModelAdapter {
+
+	String loadFile(String fileName);
+
+}

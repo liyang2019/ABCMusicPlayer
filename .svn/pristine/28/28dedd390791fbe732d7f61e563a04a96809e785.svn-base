@@ -1,0 +1,63 @@
+package play;
+import provided.abcParser.ABCParser;
+import provided.music.APhraseVisitor;
+import provided.music.IPhrase;
+import provided.music.IPhraseVisitor;
+import provided.music.IPhraseVisitorCmd;
+import provided.music.Note;
+import provided.player.ISequencePlayerStatus;
+import provided.player.SequencePlayer;
+import provided.util.ABCUtil;
+
+public class Play {
+	public static void main(String[] args) {
+		SequencePlayer sp = new SequencePlayer(16, 2);  // 16 = ticks per QUARTER note
+		sp.setTicksPerDefaultNote(16);  // 16 = ticks per DEFAULT note
+		sp.setTempo(100);   // 140 quarter notes (beats) per minute
+		
+//		Note g = new Note('G', 0, 0, 1.0, false);
+//		int next = sp.addNote(g, 10);   // 10 = start tick of note.  Tick of next note is returned.
+//		g = new Note('A', 0, 0, 1.5, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('A', -1, 0, 1.5, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('A', 1, 0, 1.5, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('A', 0, 0, 1, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('B', 0, 0, 1, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('C', 0, 0, 1, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('D', 0, 0, 1, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('E', 0, 0, 1, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('F', 0, 0, 1, false);
+//		next = sp.addNote(g, next);
+//		g = new Note('G', 0, 0, 1, false);
+//		next = sp.addNote(g, next);
+//		sp.play(ISequencePlayerStatus.NULL);   // No-op end-of-song cmd supplied.
+//		ABCParser abcParser = new ABCParser("/songs/minuet.abc");
+//		System.out.println(ABCUtil.Singleton.getFileContents("/songs/minuet.abc"));
+		
+//		SequencePlayer sp = new SequencePlayer(20, 3);
+		IPhrase note = new Note('G', 0, 0, 1, false);
+		IPhraseVisitor noteVisotor = new APhraseVisitor() {
+			{
+				this.addCmd("Note", new IPhraseVisitorCmd() {
+					
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						SequencePlayer sp = (SequencePlayer) params[0];
+						int start = 10;
+						sp.addNote((Note) host, start);
+						sp.play(ISequencePlayerStatus.NULL);
+						return start;
+					}
+				});
+			}
+		};
+		note.execute(noteVisotor, sp);
+	}
+}

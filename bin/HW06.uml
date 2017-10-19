@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_J0L58LIuEeew1dEtYoKuXg" name="HW06">
+    <eAnnotations xmi:id="_KKHGoLIuEeew1dEtYoKuXg" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_KKN0ULIuEeew1dEtYoKuXg" source="codegen">
+        <details xmi:id="_KKN0UbIuEeew1dEtYoKuXg" key="codegenDirectory" value="/HW06/src"/>
+        <details xmi:id="_LNl84LIuEeew1dEtYoKuXg" key="AssociatedSourceCode" value="/HW06/src/controller/ABCPlayerController.java;3886605369/1;/HW06/src/model/ABCPlayerModel.java;723152285/1;/HW06/src/model/IViewAdapter.java;224218672/1;/HW06/src/view/ABCPlayerGUI.java;2622783507/1;/HW06/src/view/IModelAdapter.java;3739315900/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_KlgCILIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_KlgpMLIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_KlgpMbIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_KlgpMrIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_KlgpM7IuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_KlhQQLIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_KlhQQbIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_KlhQQrIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_KlieYLIuEeew1dEtYoKuXg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_KlpMELIuEeew1dEtYoKuXg" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_KlpzILIuEeew1dEtYoKuXg" name="awt">
+        <packagedElement xmi:type="uml:Package" xmi:id="_KmeSgLIuEeew1dEtYoKuXg" name="event">
+          <packagedElement xmi:type="uml:Interface" xmi:id="_KsNuILIuEeew1dEtYoKuXg" name="ActionListener"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_KsW4EbIuEeew1dEtYoKuXg" name="ActionEvent"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KqqO8LIuEeew1dEtYoKuXg" name="EventQueue"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Kr0FgLIuEeew1dEtYoKuXg" name="BorderLayout"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_KlrBQLIuEeew1dEtYoKuXg" name="model">
+      <packagedElement xmi:type="uml:Class" xmi:id="_KnrzcLIuEeew1dEtYoKuXg" name="ABCPlayerModel">
+        <ownedComment xmi:id="_KuJAwLIuEeew1dEtYoKuXg">
+          <body>The ABC player model.
+
+@author Yue Pan, Yang li
+ *</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_KtHGALIuEeew1dEtYoKuXg" name="_viewAdapter" visibility="private" type="_KoCYwLIuEeew1dEtYoKuXg" association="_KuYRULIuEeew1dEtYoKuXg"/>
+        <ownedAttribute xmi:id="_KtIUILIuEeew1dEtYoKuXg" name="parsedPhrase" visibility="private" type="_KrLzYLIuEeew1dEtYoKuXg" association="_KuY4YbIuEeew1dEtYoKuXg"/>
+        <ownedAttribute xmi:id="_KtI7MLIuEeew1dEtYoKuXg" name="DEFAULT_TICKS_PER_QUARTER_NOTE" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtI7MbIuEeew1dEtYoKuXg" value="16"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtJiQLIuEeew1dEtYoKuXg" name="DEFAULT_TEMPO" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtJiQbIuEeew1dEtYoKuXg" value="120"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtJiQrIuEeew1dEtYoKuXg" name="DEFAULT_INSTRUMENTS" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtKJULIuEeew1dEtYoKuXg" value="0"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtKwYLIuEeew1dEtYoKuXg" name="sp" visibility="private" type="_Krf8cbIuEeew1dEtYoKuXg" association="_KuaGgLIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtLXcLIuEeew1dEtYoKuXg" value="new SequencePlayer(DEFAULT_TICKS_PER_QUARTER_NOTE, DEFAULT_INSTRUMENTS)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtMlkLIuEeew1dEtYoKuXg" name="DEFAULT_START_TICK" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtNMoLIuEeew1dEtYoKuXg" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtNMobIuEeew1dEtYoKuXg" name="_toStringAglo" visibility="private" type="_KrBbULIuEeew1dEtYoKuXg" association="_KubUoLIuEeew1dEtYoKuXg"/>
+        <ownedAttribute xmi:id="_KtOawLIuEeew1dEtYoKuXg" name="_musicPlayAlgo" visibility="private" type="_KrBbULIuEeew1dEtYoKuXg" association="_Kub7sbIuEeew1dEtYoKuXg"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuAd4LIuEeew1dEtYoKuXg" name="ABCPlayerModel" specification="_KrofULIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuAd4bIuEeew1dEtYoKuXg" name="_viewAdapter" type="_KoCYwLIuEeew1dEtYoKuXg"/>
+          <ownedParameter xmi:id="_KuAd4rIuEeew1dEtYoKuXg" type="_KnrzcLIuEeew1dEtYoKuXg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>this._viewAdapter = _viewAdapter;	
+		
+		// set toString algo
+		_toStringAglo = generateToStringAlgo();
+		NESeqList.setToStringAlgo(_toStringAglo);
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuBE8LIuEeew1dEtYoKuXg" name="generateToStringAlgo" specification="_Knvd0LIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuBE8bIuEeew1dEtYoKuXg" type="_KrBbULIuEeew1dEtYoKuXg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return new APhraseVisitor(new IPhraseVisitorCmd() {
+			
+			// default to string algorithm
+			@Override
+			public Object apply(String id, IPhrase host, Object... params) {
+				return host.toString();
+			}
+		}) {
+			
+			// initializer for anonymous inner class.
+			{
+				this.addCmd(&quot;NESeqList&quot;, new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return ((NESeqList) host).getRest().execute(_toStringAglo, params[0] + &quot;, &quot; + ((NESeqList) host).getFirst().toString());
+					}
+				});
+				this.addCmd(&quot;MTSeqList&quot;, new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return params[0] + &quot;}&quot;;
+					}
+				});
+			}
+		};
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuCTELIuEeew1dEtYoKuXg" name="generateMusicPlayAlgo" specification="_KnxTALIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuCTEbIuEeew1dEtYoKuXg" type="_KrBbULIuEeew1dEtYoKuXg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>/**
+		 * default cmd to play
+		 */
+		IPhraseVisitorCmd playDefaultCmd = new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return params[0];
+					}
+		};
+		
+		return new APhraseVisitor(playDefaultCmd) {
+			
+			// init 
+			{
+				// add ignored header command
+				String headerString = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;
+				for (int i = 0; i &lt; headerString.length(); i++) {
+					addCmd(&quot;&quot; + headerString.charAt(i), playDefaultCmd);
+				}
+				
+				// add chord
+				this.addCmd(Chord.ID, new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						Chord chord = (Chord) host;
+						int tick = (int) params[0];
+						Note[] notes = chord.getNotes();
+						for (Note note : notes) {
+							tick = (int) note.execute(_musicPlayAlgo, params[0]);
+						}
+						return tick;
+					}
+				});
+				
+				// add triplet
+				this.addCmd(Triplet.ID, new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						Triplet triplet = (Triplet) host;
+						int tick = (int) params[0];
+						Note[] notes = triplet.getNotes();
+						for (Note note : notes) {
+							tick = (int) note.execute(_musicPlayAlgo, tick);
+						}
+						return tick;
+					}
+				});
+				
+				// Unknown case (Tuplet) (throw exception)
+				this.addCmd(Tuplet.ID, new IPhraseVisitorCmd() {
+					public Object apply(String idx, IPhrase host, Object... inps) {
+						throw new IllegalArgumentException(
+								&quot;APhraseVisitor: Unknown index encountered: &quot; + idx);
+					}
+				});
+				
+				// The input for the SequencePlayer is ticks/quarterNote and instruments, 
+				// which is music independence. The following 'L' and 'Q' headers set the 
+				// speed of SequencePlayer to play a specific music.
+				
+				// Header 'L' to set the ticks/defaultNote by using ticks/quarterNote and defaultNote
+				this.addCmd(&quot;L&quot;, new IPhraseVisitorCmd() {
+
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						Header L = (Header) host;
+						double defaultNote = ABCUtil.Singleton.parseFraction(L.getValue());
+						int ticksPerDefaultNote = (int) (sp.getTicksPerQuarterNote() * 4 * defaultNote);
+						sp.setTicksPerDefaultNote(ticksPerDefaultNote);
+						return params[0];
+					}
+				});
+				
+				// Header Q to set the quarterNote/minute by using ticks/quarterNote and ticks/defaultNote.
+				this.addCmd(&quot;Q&quot;, new IPhraseVisitorCmd() {
+
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						Header Q = (Header) host;
+						int tempo = (int) ABCUtil.Singleton.parseTempo(Q.getValue(),
+								(double) sp.getTicksPerQuarterNote() / sp.getTicksPerDefaultNote());
+						sp.setTempo(tempo);
+						return params[0];
+					}
+				});
+				
+				// Header K
+				this.addCmd(&quot;K&quot;, new IPhraseVisitorCmd() {
+
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						Header K = (Header) host;
+						KeySignature keySig = new KeySignature(K.getValue());
+						// Note case
+						_musicPlayAlgo.addCmd(Note.ID, new IPhraseVisitorCmd() {
+
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+
+								Note note = (Note) host;
+								Object tick = sp.addNote(keySig.adjust(note), (int) params[0]);
+								return tick;
+							}
+						});
+						return params[0];
+					}
+				});
+				
+				// individual Note case
+				this.addCmd(Note.ID, new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						Note note = (Note) host;
+						Object tick = sp.addNote(note, (int) params[0]);
+						return tick;
+					}
+				});
+				
+				//Non-empty case
+				this.addCmd(NESeqList.ID, new IPhraseVisitorCmd() {
+
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						NESeqList NEhost = (NESeqList) host;
+						Object tick = NEhost.getFirst().execute(_musicPlayAlgo, params[0]);
+						return NEhost.getRest().execute(_musicPlayAlgo, tick);
+					}
+				});
+				
+				// Empty case
+				this.addCmd(MTSeqList.ID, new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						sp.play(ISequencePlayerStatus.NULL);
+						return params[0];
+					}
+				});
+			}
+};
+		
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuC6ILIuEeew1dEtYoKuXg" name="loadFile" specification="_KnzIMLIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuC6IbIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KuC6IrIuEeew1dEtYoKuXg" direction="return">
+            <name xsi:nil="true"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return ABCUtil.Singleton.getFileContents(fixFileName(fileName));
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuC6I7IuEeew1dEtYoKuXg" name="fixFileName" specification="_Kn0WULIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuC6JLIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KuC6JbIuEeew1dEtYoKuXg" direction="return">
+            <name xsi:nil="true"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return &quot;/songs/&quot; + fileName + &quot;.abc&quot;;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuDhMLIuEeew1dEtYoKuXg" name="start" specification="_Kn1kcLIuEeew1dEtYoKuXg">
+          <language>java</language>
+          <body>_viewAdapter.listInstruments(ABCUtil.Singleton.getInstruments());
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuDhMbIuEeew1dEtYoKuXg" name="parseFile" specification="_Kn2LgLIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuDhMrIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KuDhM7IuEeew1dEtYoKuXg" direction="return">
+            <name xsi:nil="true"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>ABCParser abcParser = new ABCParser(fixFileName(fileName));
+		parsedPhrase = abcParser.parse();
+		return parsedPhrase.toString();
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuEIQLIuEeew1dEtYoKuXg" name="startplay" specification="_KsyV4LIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuEIQbIuEeew1dEtYoKuXg" name="instrument" type="_KqyKwLIuEeew1dEtYoKuXg"/>
+          <language>java</language>
+          <body>reInitializePlayer(instrument);
+		parsedPhrase.execute(_musicPlayAlgo, DEFAULT_START_TICK);
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuEvULIuEeew1dEtYoKuXg" name="stopPlay" specification="_Kn3ZoLIuEeew1dEtYoKuXg">
+          <language>java</language>
+          <body>sp.stop();		
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuEvUbIuEeew1dEtYoKuXg" name="reInitializePlayer" specification="_KszkALIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuEvUrIuEeew1dEtYoKuXg" name="instrument" type="_KqyKwLIuEeew1dEtYoKuXg"/>
+          <language>java</language>
+          <body>// set default ticks and tempo.
+		sp.init(DEFAULT_TICKS_PER_QUARTER_NOTE, instrument.getValue());
+		sp.setTempo(DEFAULT_TEMPO);
+		// set music play algo according to parsedPhrase.
+		_musicPlayAlgo = generateMusicPlayAlgo();
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_Knvd0LIuEeew1dEtYoKuXg" name="generateToStringAlgo" visibility="private" method="_KuBE8LIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KsxHwLIuEeew1dEtYoKuXg" type="_KrBbULIuEeew1dEtYoKuXg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KnxTALIuEeew1dEtYoKuXg" name="generateMusicPlayAlgo" visibility="private" method="_KuCTELIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_Ksxu0LIuEeew1dEtYoKuXg" type="_KrBbULIuEeew1dEtYoKuXg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KnzIMLIuEeew1dEtYoKuXg" name="loadFile" method="_KuC6ILIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuJAwrIuEeew1dEtYoKuXg">
+            <body>@param fileName The file name of an ABC music file.
+	 * @return string String representation of the contents of an ABC music file.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_KnzIMbIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KnzvQLIuEeew1dEtYoKuXg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Kn0WULIuEeew1dEtYoKuXg" name="fixFileName" visibility="private" method="_KuC6I7IuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuJAw7IuEeew1dEtYoKuXg">
+            <body>
+	 * @param fileName The file name of an ABC music file.
+	 * @return The full file name of an ABC music file including file path.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Kn09YLIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Kn09YbIuEeew1dEtYoKuXg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Kn1kcLIuEeew1dEtYoKuXg" name="start" method="_KuDhMLIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuJAxLIuEeew1dEtYoKuXg">
+            <body>To start the model.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Kn2LgLIuEeew1dEtYoKuXg" name="parseFile" method="_KuDhMbIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuJn0LIuEeew1dEtYoKuXg">
+            <body>@param fileName The file name of an ABC music file.
+	 * @return String representation of the parsed phrases of an ABC music file.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Kn2ykLIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_Kn2ykbIuEeew1dEtYoKuXg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Kn3ZoLIuEeew1dEtYoKuXg" name="stopPlay" method="_KuEvULIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuJn0rIuEeew1dEtYoKuXg">
+            <body>function to stop the music.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KrofULIuEeew1dEtYoKuXg" name="ABCPlayerModel" method="_KuAd4LIuEeew1dEtYoKuXg">
+          <eAnnotations xmi:id="_KrofUrIuEeew1dEtYoKuXg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_KrpGYLIuEeew1dEtYoKuXg" key="create"/>
+          </eAnnotations>
+          <ownedComment xmi:id="_KuJAwbIuEeew1dEtYoKuXg">
+            <body>@param _viewAdapter model to view adapter.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_KrofUbIuEeew1dEtYoKuXg" name="_viewAdapter" type="_KoCYwLIuEeew1dEtYoKuXg"/>
+          <ownedParameter xmi:id="_KrpGYbIuEeew1dEtYoKuXg" type="_KnrzcLIuEeew1dEtYoKuXg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KsyV4LIuEeew1dEtYoKuXg" name="startplay" method="_KuEIQLIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuJn0bIuEeew1dEtYoKuXg">
+            <body> function to play the music.
+	 * @param instrument the MIDI instrument to play this music.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_KsyV4bIuEeew1dEtYoKuXg" name="instrument" type="_KqyKwLIuEeew1dEtYoKuXg"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KszkALIuEeew1dEtYoKuXg" name="reInitializePlayer" visibility="private" method="_KuEvUbIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KszkAbIuEeew1dEtYoKuXg" name="instrument" type="_KqyKwLIuEeew1dEtYoKuXg"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_KoCYwLIuEeew1dEtYoKuXg" name="IViewAdapter">
+        <ownedComment xmi:id="_KuJn07IuEeew1dEtYoKuXg">
+          <body>model to view adapter.
+
+@author Li Yang, Yue Pan
+ *</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_KoDm4LIuEeew1dEtYoKuXg" name="NULL_OBJECT" isLeaf="true" isStatic="true" type="_KoCYwLIuEeew1dEtYoKuXg" isReadOnly="true" association="_KuUm8LIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KoE1ALIuEeew1dEtYoKuXg" value="new IViewAdapter() {&#xA;&#xA;&#x9;&#x9;@Override&#xA;&#x9;&#x9;public void listInstruments(ABCInstrument[] instruments) {&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;}"/>
+        </ownedAttribute>
+        <ownedOperation xmi:id="_Ks2AQLIuEeew1dEtYoKuXg" name="listInstruments">
+          <ownedParameter xmi:id="_Ks2AQbIuEeew1dEtYoKuXg" name="instruments" type="_KqyKwLIuEeew1dEtYoKuXg">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ks2AQrIuEeew1dEtYoKuXg" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuUm8LIuEeew1dEtYoKuXg" name="" memberEnd="_KuVOALIuEeew1dEtYoKuXg _KoDm4LIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuVOALIuEeew1dEtYoKuXg" name="" type="_KoCYwLIuEeew1dEtYoKuXg" association="_KuUm8LIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuYRULIuEeew1dEtYoKuXg" name="" memberEnd="_KuYRUbIuEeew1dEtYoKuXg _KtHGALIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuYRUbIuEeew1dEtYoKuXg" name="" type="_KnrzcLIuEeew1dEtYoKuXg" association="_KuYRULIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuY4YbIuEeew1dEtYoKuXg" name="" memberEnd="_KuY4YrIuEeew1dEtYoKuXg _KtIUILIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuY4YrIuEeew1dEtYoKuXg" name="" type="_KnrzcLIuEeew1dEtYoKuXg" association="_KuY4YbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuaGgLIuEeew1dEtYoKuXg" name="" memberEnd="_KuaGgbIuEeew1dEtYoKuXg _KtKwYLIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuaGgbIuEeew1dEtYoKuXg" name="" type="_KnrzcLIuEeew1dEtYoKuXg" association="_KuaGgLIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KubUoLIuEeew1dEtYoKuXg" name="" memberEnd="_KubUobIuEeew1dEtYoKuXg _KtNMobIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KubUobIuEeew1dEtYoKuXg" name="" type="_KnrzcLIuEeew1dEtYoKuXg" association="_KubUoLIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Kub7sbIuEeew1dEtYoKuXg" name="" memberEnd="_Kub7srIuEeew1dEtYoKuXg _KtOawLIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_Kub7srIuEeew1dEtYoKuXg" name="" type="_KnrzcLIuEeew1dEtYoKuXg" association="_Kub7sbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_KlrBQbIuEeew1dEtYoKuXg" name="provided">
+      <packagedElement xmi:type="uml:Package" xmi:id="_KlroULIuEeew1dEtYoKuXg" name="util">
+        <packagedElement xmi:type="uml:Class" xmi:id="_KqyKwLIuEeew1dEtYoKuXg" name="ABCInstrument"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrhxoLIuEeew1dEtYoKuXg" name="ABCUtil"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrkN4LIuEeew1dEtYoKuXg" name="KeySignature"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Kl4coLIuEeew1dEtYoKuXg" name="abcParser">
+        <packagedElement xmi:type="uml:Class" xmi:id="_Kq9J4LIuEeew1dEtYoKuXg" name="ABCParser"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Kl5DsLIuEeew1dEtYoKuXg" name="music">
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrBbULIuEeew1dEtYoKuXg" name="APhraseVisitor"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrD3kbIuEeew1dEtYoKuXg" name="Chord"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrIJALIuEeew1dEtYoKuXg" name="Header"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_KrLzYLIuEeew1dEtYoKuXg" name="IPhrase"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_KrOPobIuEeew1dEtYoKuXg" name="IPhraseVisitorCmd"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrQr4LIuEeew1dEtYoKuXg" name="MTSeqList"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrUWQbIuEeew1dEtYoKuXg" name="NESeqList"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrWygbIuEeew1dEtYoKuXg" name="Note"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrZOwLIuEeew1dEtYoKuXg" name="Triplet"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KrbrAbIuEeew1dEtYoKuXg" name="Tuplet"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Kl6R0LIuEeew1dEtYoKuXg" name="player">
+        <packagedElement xmi:type="uml:Interface" xmi:id="_KrdgMbIuEeew1dEtYoKuXg" name="ISequencePlayerStatus"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Krf8cbIuEeew1dEtYoKuXg" name="SequencePlayer"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_KlroUbIuEeew1dEtYoKuXg" name="view">
+      <packagedElement xmi:type="uml:Class" xmi:id="_KoHRQLIuEeew1dEtYoKuXg" name="ABCPlayerGUI">
+        <ownedComment xmi:id="_KuJn1LIuEeew1dEtYoKuXg">
+          <body>The ABC music player GUI.
+
+@author Li Yang, Yue Pan
+@param &lt;ComboObject> the object type in the combo list.
+ *</body>
+        </ownedComment>
+        <generalization xmi:id="_Ks9VALIuEeew1dEtYoKuXg" general="_Kr16sLIuEeew1dEtYoKuXg"/>
+        <ownedAttribute xmi:id="_KtPo4LIuEeew1dEtYoKuXg" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtQP8LIuEeew1dEtYoKuXg" value="2716978961603836725L"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtQ3ALIuEeew1dEtYoKuXg" name="_modelAdapter" visibility="private" type="_Kog54LIuEeew1dEtYoKuXg" association="_KueX8LIuEeew1dEtYoKuXg"/>
+        <ownedAttribute xmi:id="_KtSFIbIuEeew1dEtYoKuXg" name="contentPane" visibility="private" isLeaf="true" type="_Kr3I0bIuEeew1dEtYoKuXg" isReadOnly="true" association="_Kue_AbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtSsMLIuEeew1dEtYoKuXg" value="new JPanel()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtTTQbIuEeew1dEtYoKuXg" name="pnlCtl" visibility="private" isLeaf="true" type="_Kr3I0bIuEeew1dEtYoKuXg" isReadOnly="true" association="_KugNIbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtT6ULIuEeew1dEtYoKuXg" value="new JPanel()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtUhYbIuEeew1dEtYoKuXg" name="txtInput" visibility="private" isLeaf="true" type="_Kr9PcbIuEeew1dEtYoKuXg" isReadOnly="true" association="_KuhbQbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtVIcLIuEeew1dEtYoKuXg" value="new JTextField()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtVIcrIuEeew1dEtYoKuXg" name="btnLoad" visibility="private" isLeaf="true" type="_KsCH8LIuEeew1dEtYoKuXg" isReadOnly="true" association="_KuipYLIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtVvgLIuEeew1dEtYoKuXg" value="new JButton(&quot;Load&quot;)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtW9oLIuEeew1dEtYoKuXg" name="btnParse" visibility="private" isLeaf="true" type="_KsCH8LIuEeew1dEtYoKuXg" isReadOnly="true" association="_Kuj3gLIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtW9obIuEeew1dEtYoKuXg" value="new JButton(&quot;Parse&quot;)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtZZ4LIuEeew1dEtYoKuXg" name="comboInstruments" visibility="private" isLeaf="true" type="_KsFLQLIuEeew1dEtYoKuXg" isReadOnly="true" association="_KukekbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtbPELIuEeew1dEtYoKuXg" value="new JComboBox&lt;>()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_Ktb2ILIuEeew1dEtYoKuXg" name="btnPlay" visibility="private" isLeaf="true" type="_KsCH8LIuEeew1dEtYoKuXg" isReadOnly="true" association="_KulFobIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_Ktb2IbIuEeew1dEtYoKuXg" value="new JButton(&quot;Play&quot;)"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtcdMbIuEeew1dEtYoKuXg" name="splitPane" visibility="private" isLeaf="true" type="_KsKq0bIuEeew1dEtYoKuXg" isReadOnly="true" association="_KumTwbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtdEQLIuEeew1dEtYoKuXg" value="new JSplitPane()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtdrULIuEeew1dEtYoKuXg" name="spFileContents" visibility="private" isLeaf="true" type="_KsL48LIuEeew1dEtYoKuXg" isReadOnly="true" association="_Kunh4LIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtdrUbIuEeew1dEtYoKuXg" value="new JScrollPane()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KteSYbIuEeew1dEtYoKuXg" name="taFileContents" visibility="private" isLeaf="true" type="_KsMgAbIuEeew1dEtYoKuXg" isReadOnly="true" association="_KuoI8bIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_Kte5cLIuEeew1dEtYoKuXg" value="new JTextArea()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KtgHkLIuEeew1dEtYoKuXg" name="spParsedStructure" visibility="private" isLeaf="true" type="_KsL48LIuEeew1dEtYoKuXg" isReadOnly="true" association="_KuowAbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtguoLIuEeew1dEtYoKuXg" value="new JScrollPane()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KthVsbIuEeew1dEtYoKuXg" name="taParsedStructure" visibility="private" isLeaf="true" type="_KsMgAbIuEeew1dEtYoKuXg" isReadOnly="true" association="_KupXEbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_Kth8wLIuEeew1dEtYoKuXg" value="new JTextArea()"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_Ktij0bIuEeew1dEtYoKuXg" name="btnStop" visibility="private" isLeaf="true" type="_KsCH8LIuEeew1dEtYoKuXg" isReadOnly="true" association="_KuqlMbIuEeew1dEtYoKuXg">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_KtjK4LIuEeew1dEtYoKuXg" value="new JButton(&quot;Stop&quot;)"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuF9cLIuEeew1dEtYoKuXg" name="ABCPlayerGUI" specification="_Ksez4LIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuF9cbIuEeew1dEtYoKuXg" name="_modelAdapter" type="_Kog54LIuEeew1dEtYoKuXg"/>
+          <ownedParameter xmi:id="_KuF9crIuEeew1dEtYoKuXg" type="_KoHRQLIuEeew1dEtYoKuXg" direction="return"/>
+          <language>java</language>
+          <body>this._modelAdapter = _modelAdapter;
+		initGUI();
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuGkgLIuEeew1dEtYoKuXg" name="start" specification="_KoN-8LIuEeew1dEtYoKuXg">
+          <language>java</language>
+          <body>setVisible(true);
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuGkgbIuEeew1dEtYoKuXg" name="initGUI" specification="_KoOmALIuEeew1dEtYoKuXg">
+          <language>java</language>
+          <body>setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 500);
+
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		pnlCtl.setToolTipText(&quot;the controll panel&quot;);
+		getContentPane().add(pnlCtl, BorderLayout.NORTH);
+		
+		JLabel lblFile = new JLabel(&quot;File:&quot;);
+		pnlCtl.add(lblFile);
+		txtInput.setToolTipText(&quot;input a .abc music file name (withour .abc)&quot;);
+		
+		txtInput.setText(&quot;music file name&quot;);
+		pnlCtl.add(txtInput);
+		txtInput.setColumns(10);
+		btnLoad.setToolTipText(&quot;load the abc music file&quot;);
+		
+		btnLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				taFileContents.setText(_modelAdapter.loadFile(txtInput.getText()));
+			}
+		});
+		pnlCtl.add(btnLoad);
+		btnParse.setToolTipText(&quot;parse the abc music file&quot;);
+		btnParse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				taParsedStructure.setText(_modelAdapter.parsePhrase(txtInput.getText()));
+			}
+		});
+		
+		pnlCtl.add(btnParse);
+		comboInstruments.setToolTipText(&quot;to select a instrument to play the abc music file&quot;);
+		pnlCtl.add(comboInstruments);
+		btnPlay.setToolTipText(&quot;play the music&quot;);
+		btnPlay.addActionListener(new ActionListener() {
+			@SuppressWarnings(&quot;unchecked&quot;)
+			public void actionPerformed(ActionEvent e) {
+				_modelAdapter.play((ComboObject) comboInstruments.getSelectedItem());
+			}
+		});
+		pnlCtl.add(btnPlay);
+		btnStop.setToolTipText(&quot;stop the current play of the music&quot;);
+		
+		btnStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				_modelAdapter.stop();
+			}
+		});
+		pnlCtl.add(btnStop);
+		
+		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		splitPane.setResizeWeight(0.5);
+		contentPane.add(splitPane, BorderLayout.CENTER);
+		splitPane.setLeftComponent(spFileContents);
+		taFileContents.setToolTipText(&quot;The abc music file content is displayed here&quot;);
+		taFileContents.setLineWrap(true);
+		taFileContents.setWrapStyleWord(true);
+		spFileContents.setViewportView(taFileContents);
+		splitPane.setRightComponent(spParsedStructure);
+		taParsedStructure.setToolTipText(&quot;The parsed abc music file phrase content is displayed here.&quot;);
+		taParsedStructure.setLineWrap(true);
+		taParsedStructure.setWrapStyleWord(true);
+		spParsedStructure.setViewportView(taParsedStructure);
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KuHLkLIuEeew1dEtYoKuXg" name="listInstruments" specification="_Ks8G4bIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_KuHLkbIuEeew1dEtYoKuXg" name="comboObjects" type="_Ks7f0LIuEeew1dEtYoKuXg">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KuHLkrIuEeew1dEtYoKuXg" value="*"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>for (ComboObject comboObject : comboObjects) {
+			comboInstruments.addItem(comboObject);
+		}
+		comboInstruments.setSelectedIndex(0);
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_KoN-8LIuEeew1dEtYoKuXg" name="start" method="_KuGkgLIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuKO4LIuEeew1dEtYoKuXg">
+            <body>Start the view, i.e. make it visible.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KoOmALIuEeew1dEtYoKuXg" name="initGUI" visibility="private" method="_KuGkgbIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuKO4bIuEeew1dEtYoKuXg">
+            <body>Initialize the GUI components</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Ksez4LIuEeew1dEtYoKuXg" name="ABCPlayerGUI" method="_KuF9cLIuEeew1dEtYoKuXg">
+          <eAnnotations xmi:id="_Ksfa8LIuEeew1dEtYoKuXg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_Ksfa8bIuEeew1dEtYoKuXg" key="create"/>
+          </eAnnotations>
+          <ownedComment xmi:id="_KuJn1bIuEeew1dEtYoKuXg">
+            <body>Create the frame.
+	 * @param _modelAdapter view to model adapter.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Ksez4bIuEeew1dEtYoKuXg" name="_modelAdapter" type="_Kog54LIuEeew1dEtYoKuXg"/>
+          <ownedParameter xmi:id="_Ksfa8rIuEeew1dEtYoKuXg" type="_KoHRQLIuEeew1dEtYoKuXg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Ks8G4bIuEeew1dEtYoKuXg" name="listInstruments" method="_KuHLkLIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuKO4rIuEeew1dEtYoKuXg">
+            <body>list available combo objects.
+	 * 
+	 * @param comboObjects available combo objects.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Ks8t8LIuEeew1dEtYoKuXg" name="comboObjects" type="_Ks7f0LIuEeew1dEtYoKuXg">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ks8t8bIuEeew1dEtYoKuXg" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_Kog54LIuEeew1dEtYoKuXg" name="IModelAdapter">
+        <ownedComment xmi:id="_KuKO47IuEeew1dEtYoKuXg">
+          <body>The view to model adapter.
+
+@author Yang Li, Yue Pan
+@param &lt;ComboObject> the object type in the combo list.
+ *</body>
+        </ownedComment>
+        <ownedOperation xmi:id="_Koj9MLIuEeew1dEtYoKuXg" name="loadFile" visibility="package">
+          <ownedComment xmi:id="_KuKO5LIuEeew1dEtYoKuXg">
+            <body>@param fileName fileName.abc is the ABC file name.
+	 * @return the string content of ABC file</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Koj9MbIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KokkQLIuEeew1dEtYoKuXg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KomZcLIuEeew1dEtYoKuXg" name="parsePhrase">
+          <ownedComment xmi:id="_KuKO5bIuEeew1dEtYoKuXg">
+            <body>parse the fileName.abc file and save the parsed IPharse object in model,
+	 * return the string representation of the parse IPharse object.
+	 * 
+	 * @param fileName fileName.abc is the ABC file name.
+	 * @return the string representation of parsed ABC file</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_KomZcbIuEeew1dEtYoKuXg" name="fileName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KonnkLIuEeew1dEtYoKuXg" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_Koo1sLIuEeew1dEtYoKuXg" name="stop">
+          <ownedComment xmi:id="_KuKO57IuEeew1dEtYoKuXg">
+            <body>stop tp play the ABC music file</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KtAYULIuEeew1dEtYoKuXg" name="play">
+          <ownedComment xmi:id="_KuKO5rIuEeew1dEtYoKuXg">
+            <body>play the parsed ABC music file.
+	 * @param comboObject  object type in the combo list for use to play the music.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_KtAYUbIuEeew1dEtYoKuXg" name="comboObject" type="_Ks7f0LIuEeew1dEtYoKuXg"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Ks7f0LIuEeew1dEtYoKuXg" name="ComboObject"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KueX8LIuEeew1dEtYoKuXg" name="" memberEnd="_KueX8bIuEeew1dEtYoKuXg _KtQ3ALIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KueX8bIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KueX8LIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Kue_AbIuEeew1dEtYoKuXg" name="" memberEnd="_Kue_ArIuEeew1dEtYoKuXg _KtSFIbIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_Kue_ArIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_Kue_AbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KugNIbIuEeew1dEtYoKuXg" name="" memberEnd="_KugNIrIuEeew1dEtYoKuXg _KtTTQbIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KugNIrIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KugNIbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuhbQbIuEeew1dEtYoKuXg" name="" memberEnd="_KuhbQrIuEeew1dEtYoKuXg _KtUhYbIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuhbQrIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KuhbQbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuipYLIuEeew1dEtYoKuXg" name="" memberEnd="_KuipYbIuEeew1dEtYoKuXg _KtVIcrIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuipYbIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KuipYLIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Kuj3gLIuEeew1dEtYoKuXg" name="" memberEnd="_Kuj3gbIuEeew1dEtYoKuXg _KtW9oLIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_Kuj3gbIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_Kuj3gLIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KukekbIuEeew1dEtYoKuXg" name="" memberEnd="_KukekrIuEeew1dEtYoKuXg _KtZZ4LIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KukekrIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KukekbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KulFobIuEeew1dEtYoKuXg" name="" memberEnd="_KulForIuEeew1dEtYoKuXg _Ktb2ILIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KulForIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KulFobIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KumTwbIuEeew1dEtYoKuXg" name="" memberEnd="_KumTwrIuEeew1dEtYoKuXg _KtcdMbIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KumTwrIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KumTwbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Kunh4LIuEeew1dEtYoKuXg" name="" memberEnd="_Kunh4bIuEeew1dEtYoKuXg _KtdrULIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_Kunh4bIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_Kunh4LIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuoI8bIuEeew1dEtYoKuXg" name="" memberEnd="_KuoI8rIuEeew1dEtYoKuXg _KteSYbIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuoI8rIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KuoI8bIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuowAbIuEeew1dEtYoKuXg" name="" memberEnd="_KuowArIuEeew1dEtYoKuXg _KtgHkLIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuowArIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KuowAbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KupXEbIuEeew1dEtYoKuXg" name="" memberEnd="_KupXErIuEeew1dEtYoKuXg _KthVsbIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KupXErIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KupXEbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuqlMbIuEeew1dEtYoKuXg" name="" memberEnd="_KuqlMrIuEeew1dEtYoKuXg _Ktij0bIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuqlMrIuEeew1dEtYoKuXg" name="" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KuqlMbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_Kl0LMLIuEeew1dEtYoKuXg" name="controller">
+      <packagedElement xmi:type="uml:Class" xmi:id="_KnKPALIuEeew1dEtYoKuXg" name="ABCPlayerController">
+        <ownedComment xmi:id="_KuHyoLIuEeew1dEtYoKuXg">
+          <body>The ABC player controller.
+
+@author Yue Pan, Li Yang
+ *</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_KtDboLIuEeew1dEtYoKuXg" name="view" visibility="private" type="_KoHRQLIuEeew1dEtYoKuXg" association="_KuWcILIuEeew1dEtYoKuXg"/>
+        <ownedAttribute xmi:id="_KtFQ0LIuEeew1dEtYoKuXg" name="model" visibility="private" type="_KnrzcLIuEeew1dEtYoKuXg" association="_KuXDMbIuEeew1dEtYoKuXg"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Kt3T8LIuEeew1dEtYoKuXg" name="ABCPlayerController" specification="_KnXqYLIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_Kt3T8bIuEeew1dEtYoKuXg" type="_KnKPALIuEeew1dEtYoKuXg" direction="return"/>
+          <language>java</language>
+          <body>view = new ABCPlayerGUI&lt;ABCInstrument>(new IModelAdapter&lt;ABCInstrument>() {
+			
+			@Override
+			public String loadFile(String fileName) {
+				return model.loadFile(fileName);
+			}
+
+			@Override
+			public String parsePhrase(String fileName) {
+				return model.parseFile(fileName);
+			}
+
+			@Override
+			public void play(ABCInstrument instrumemt) {
+				model.startplay(instrumemt);
+			}
+
+			@Override
+			public void stop() {
+				model.stopPlay();
+			}
+		});
+		
+		model = new ABCPlayerModel(new IViewAdapter() {
+
+			@Override
+			public void listInstruments(ABCInstrument[] instruments) {
+				view.listInstruments(instruments);
+			}
+			
+		});
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Kt_PwLIuEeew1dEtYoKuXg" name="start" specification="_KndJ8LIuEeew1dEtYoKuXg">
+          <language>java</language>
+          <body>model.start();
+		view.start();
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Kt_20LIuEeew1dEtYoKuXg" name="main" specification="_KneYELIuEeew1dEtYoKuXg">
+          <ownedParameter xmi:id="_Kt_20bIuEeew1dEtYoKuXg" name="args">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Kt_20rIuEeew1dEtYoKuXg" value="*"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					(new ABCPlayerController()).start();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_KnXqYLIuEeew1dEtYoKuXg" name="ABCPlayerController" method="_Kt3T8LIuEeew1dEtYoKuXg">
+          <eAnnotations xmi:id="_Knb70LIuEeew1dEtYoKuXg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_Knb70bIuEeew1dEtYoKuXg" key="create"/>
+          </eAnnotations>
+          <ownedComment xmi:id="_KuIZsLIuEeew1dEtYoKuXg">
+            <body>constructor for the ABC player controller.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Knci4LIuEeew1dEtYoKuXg" type="_KnKPALIuEeew1dEtYoKuXg" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KndJ8LIuEeew1dEtYoKuXg" name="start" method="_Kt_PwLIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuIZsbIuEeew1dEtYoKuXg">
+            <body>Start the application</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KneYELIuEeew1dEtYoKuXg" name="main" isStatic="true" method="_Kt_20LIuEeew1dEtYoKuXg">
+          <ownedComment xmi:id="_KuIZsrIuEeew1dEtYoKuXg">
+            <body>Launch the application.   Sets the window closing behavior to WindowConstants.EXIT_ON_CLOSE
+	 * @param args input parameters.</body>
+          </ownedComment>
+          <ownedParameter xmi:id="_Kne_ILIuEeew1dEtYoKuXg" name="args">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KnlFwLIuEeew1dEtYoKuXg" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuWcILIuEeew1dEtYoKuXg" name="" memberEnd="_KuWcIbIuEeew1dEtYoKuXg _KtDboLIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuWcIbIuEeew1dEtYoKuXg" name="" type="_KnKPALIuEeew1dEtYoKuXg" association="_KuWcILIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KuXDMbIuEeew1dEtYoKuXg" name="" memberEnd="_KuXDMrIuEeew1dEtYoKuXg _KtFQ0LIuEeew1dEtYoKuXg">
+        <ownedEnd xmi:id="_KuXDMrIuEeew1dEtYoKuXg" name="" type="_KnKPALIuEeew1dEtYoKuXg" association="_KuXDMbIuEeew1dEtYoKuXg"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_KmdEYLIuEeew1dEtYoKuXg" name="javax">
+      <packagedElement xmi:type="uml:Package" xmi:id="_KmdEYbIuEeew1dEtYoKuXg" name="swing">
+        <packagedElement xmi:type="uml:Package" xmi:id="_KmdrcLIuEeew1dEtYoKuXg" name="border">
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kr4W8bIuEeew1dEtYoKuXg" name="EmptyBorder"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Kr16sLIuEeew1dEtYoKuXg" name="JFrame"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Kr3I0bIuEeew1dEtYoKuXg" name="JPanel"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Kr6MIbIuEeew1dEtYoKuXg" name="JLabel"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Kr9PcbIuEeew1dEtYoKuXg" name="JTextField"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KsCH8LIuEeew1dEtYoKuXg" name="JButton"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KsFLQLIuEeew1dEtYoKuXg" name="JComboBox"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KsKq0bIuEeew1dEtYoKuXg" name="JSplitPane"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KsL48LIuEeew1dEtYoKuXg" name="JScrollPane"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KsMgAbIuEeew1dEtYoKuXg" name="JTextArea"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_KKResLIuEeew1dEtYoKuXg">
+      <eAnnotations xmi:id="_KKWXMLIuEeew1dEtYoKuXg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_KKe6ELIuEeew1dEtYoKuXg" base_Package="_J0L58LIuEeew1dEtYoKuXg">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:Generics xmi:id="_KoJGcLIuEeew1dEtYoKuXg" genericsValue="ComboObject" base_Element="_KoHRQLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Generics xmi:id="_KoivELIuEeew1dEtYoKuXg" genericsValue="ComboObject" base_Element="_Kog54LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KqugYLIuEeew1dEtYoKuXg" base_Element="_KqqO8LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kq3DQLIuEeew1dEtYoKuXg" base_Element="_KqyKwLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrA0QLIuEeew1dEtYoKuXg" base_Element="_Kq9J4LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrD3kLIuEeew1dEtYoKuXg" base_Element="_KrBbULIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrHh8LIuEeew1dEtYoKuXg" base_Element="_KrD3kbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrLMULIuEeew1dEtYoKuXg" base_Element="_KrIJALIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrOPoLIuEeew1dEtYoKuXg" base_Element="_KrLzYLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrPdwLIuEeew1dEtYoKuXg" base_Element="_KrOPobIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrUWQLIuEeew1dEtYoKuXg" base_Element="_KrQr4LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrWygLIuEeew1dEtYoKuXg" base_Element="_KrUWQbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrYnsLIuEeew1dEtYoKuXg" base_Element="_KrWygbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrbrALIuEeew1dEtYoKuXg" base_Element="_KrZOwLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrdgMLIuEeew1dEtYoKuXg" base_Element="_KrbrAbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Krf8cLIuEeew1dEtYoKuXg" base_Element="_KrdgMbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrhKkLIuEeew1dEtYoKuXg" base_Element="_Krf8cbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Krjm0LIuEeew1dEtYoKuXg" base_Element="_KrhxoLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KrlcALIuEeew1dEtYoKuXg" base_Element="_KrkN4LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kr1ToLIuEeew1dEtYoKuXg" base_Element="_Kr0FgLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kr3I0LIuEeew1dEtYoKuXg" base_Element="_Kr16sLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kr4W8LIuEeew1dEtYoKuXg" base_Element="_Kr3I0bIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kr6MILIuEeew1dEtYoKuXg" base_Element="_Kr4W8bIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kr9PcLIuEeew1dEtYoKuXg" base_Element="_Kr6MIbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kr_EoLIuEeew1dEtYoKuXg" base_Element="_Kr9PcbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KsDWELIuEeew1dEtYoKuXg" base_Element="_KsCH8LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KsKq0LIuEeew1dEtYoKuXg" base_Element="_KsFLQLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KsLR4LIuEeew1dEtYoKuXg" base_Element="_KsKq0bIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KsMgALIuEeew1dEtYoKuXg" base_Element="_KsL48LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KsNHELIuEeew1dEtYoKuXg" base_Element="_KsMgAbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KsW4ELIuEeew1dEtYoKuXg" base_Element="_KsNuILIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KscXoLIuEeew1dEtYoKuXg" base_Element="_KsW4EbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Generics xmi:id="_KsgCALIuEeew1dEtYoKuXg" genericsValue="ComboObject" base_Element="_Ksez4bIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Ks8G4LIuEeew1dEtYoKuXg" base_Element="_Ks7f0LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Generics xmi:id="_KtECsLIuEeew1dEtYoKuXg" genericsValue="ABCInstrument" base_Element="_KtDboLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtEpwLIuEeew1dEtYoKuXg" base_Element="_KtDboLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtF34LIuEeew1dEtYoKuXg" base_Element="_KtFQ0LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtHtELIuEeew1dEtYoKuXg" base_Element="_KtHGALIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtIUIbIuEeew1dEtYoKuXg" base_Element="_KtIUILIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtL-gLIuEeew1dEtYoKuXg" base_Element="_KtKwYLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtNzsLIuEeew1dEtYoKuXg" base_Element="_KtNMobIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtPB0LIuEeew1dEtYoKuXg" base_Element="_KtOawLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Generics xmi:id="_KtReELIuEeew1dEtYoKuXg" genericsValue="ComboObject" base_Element="_KtQ3ALIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtSFILIuEeew1dEtYoKuXg" base_Element="_KtQ3ALIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtTTQLIuEeew1dEtYoKuXg" base_Element="_KtSFIbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtUhYLIuEeew1dEtYoKuXg" base_Element="_KtTTQbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtVIcbIuEeew1dEtYoKuXg" base_Element="_KtUhYbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtWWkLIuEeew1dEtYoKuXg" base_Element="_KtVIcrIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtXksLIuEeew1dEtYoKuXg" base_Element="_KtW9oLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Generics xmi:id="_KtaoALIuEeew1dEtYoKuXg" genericsValue="ComboObject" base_Element="_KtZZ4LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtbPEbIuEeew1dEtYoKuXg" base_Element="_KtZZ4LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtcdMLIuEeew1dEtYoKuXg" base_Element="_Ktb2ILIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtdEQbIuEeew1dEtYoKuXg" base_Element="_KtcdMbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KteSYLIuEeew1dEtYoKuXg" base_Element="_KtdrULIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtfggLIuEeew1dEtYoKuXg" base_Element="_KteSYbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KthVsLIuEeew1dEtYoKuXg" base_Element="_KtgHkLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_Ktij0LIuEeew1dEtYoKuXg" base_Element="_KthVsbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_KtjK4bIuEeew1dEtYoKuXg" base_Element="_Ktij0bIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuV1ELIuEeew1dEtYoKuXg" base_Element="_KuUm8LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuXDMLIuEeew1dEtYoKuXg" base_Element="_KuWcILIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuXqQLIuEeew1dEtYoKuXg" base_Element="_KuXDMbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuY4YLIuEeew1dEtYoKuXg" base_Element="_KuYRULIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuZfcLIuEeew1dEtYoKuXg" base_Element="_KuY4YbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuatkLIuEeew1dEtYoKuXg" base_Element="_KuaGgLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kub7sLIuEeew1dEtYoKuXg" base_Element="_KubUoLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kudw4LIuEeew1dEtYoKuXg" base_Element="_Kub7sbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kue_ALIuEeew1dEtYoKuXg" base_Element="_KueX8LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KugNILIuEeew1dEtYoKuXg" base_Element="_Kue_AbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuhbQLIuEeew1dEtYoKuXg" base_Element="_KugNIbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuiCULIuEeew1dEtYoKuXg" base_Element="_KuhbQbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KujQcLIuEeew1dEtYoKuXg" base_Element="_KuipYLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KukekLIuEeew1dEtYoKuXg" base_Element="_Kuj3gLIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KulFoLIuEeew1dEtYoKuXg" base_Element="_KukekbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KumTwLIuEeew1dEtYoKuXg" base_Element="_KulFobIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_Kum60LIuEeew1dEtYoKuXg" base_Element="_KumTwbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuoI8LIuEeew1dEtYoKuXg" base_Element="_Kunh4LIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuowALIuEeew1dEtYoKuXg" base_Element="_KuoI8bIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KupXELIuEeew1dEtYoKuXg" base_Element="_KuowAbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KuqlMLIuEeew1dEtYoKuXg" base_Element="_KupXEbIuEeew1dEtYoKuXg"/>
+  <UMLLabProfile:Reference xmi:id="_KurMQLIuEeew1dEtYoKuXg" base_Element="_KuqlMbIuEeew1dEtYoKuXg"/>
+</xmi:XMI>

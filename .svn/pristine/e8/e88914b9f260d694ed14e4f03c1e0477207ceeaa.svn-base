@@ -1,0 +1,102 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class ABCPlayerGUI extends JFrame {
+	
+	private IModelAdapter _modelAdapter;
+
+	private JPanel contentPane;
+	private JTextField txtInput;
+
+
+	/**
+	 * Create the frame.
+	 */
+	public ABCPlayerGUI(IModelAdapter _modelAdapter) {
+		this._modelAdapter = _modelAdapter;
+		initGUI();
+	}
+	
+	/**
+	 * Start the view, i.e. make it visible.
+	 */
+	public void start() {
+		setVisible(true);
+	}
+	
+	/**
+	 * Initialize the GUI components
+	 */
+	private void initGUI() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		JPanel pnlCtl = new JPanel();
+		pnlCtl.setToolTipText("the controll panel");
+		getContentPane().add(pnlCtl, BorderLayout.NORTH);
+		
+		JLabel lblFile = new JLabel("File:");
+		pnlCtl.add(lblFile);
+		
+		txtInput = new JTextField();
+		txtInput.setText("music file name");
+		pnlCtl.add(txtInput);
+		txtInput.setColumns(10);
+		
+		JButton btnLoad = new JButton("Load");
+		pnlCtl.add(btnLoad);
+		
+		JButton btnParse = new JButton("Parse");
+		pnlCtl.add(btnParse);
+		
+		JComboBox comboInstruments = new JComboBox();
+		pnlCtl.add(comboInstruments);
+		
+		JButton btnPlay = new JButton("Play");
+		pnlCtl.add(btnPlay);
+		
+		JSplitPane splitPane = new JSplitPane();
+		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		splitPane.setResizeWeight(0.5);
+		contentPane.add(splitPane, BorderLayout.CENTER);
+		
+		JScrollPane spFileContents = new JScrollPane();
+		splitPane.setLeftComponent(spFileContents);
+		
+		JTextArea taFileContents = new JTextArea();
+		taFileContents.setLineWrap(true);
+		taFileContents.setWrapStyleWord(true);
+		spFileContents.setViewportView(taFileContents);
+		
+		JScrollPane spParsedStructure = new JScrollPane();
+		splitPane.setRightComponent(spParsedStructure);
+		
+		JTextArea taParsedStructure = new JTextArea();
+		taParsedStructure.setLineWrap(true);
+		taParsedStructure.setWrapStyleWord(true);
+		spParsedStructure.setViewportView(taParsedStructure);
+	}
+	
+	// for testing
+	public static void main(String[] args) {
+		ABCPlayerGUI gui = new ABCPlayerGUI(null);
+		gui.start();
+	}
+
+}

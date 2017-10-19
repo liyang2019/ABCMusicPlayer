@@ -1,0 +1,11 @@
+package model;
+
+public interface IViewAdapter {
+	/**
+	 * To initialize a null object to the IViewAdapter
+	 */
+	public static final IViewAdapter NULL_OBJECT = new IViewAdapter() {
+
+	};
+
+}

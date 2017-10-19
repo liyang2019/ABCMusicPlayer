@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2017 Stephen Wong
+  -->
+
+<jnlp spec="1.0+" codebase="https://www.clear.rice.edu/comp310/JavaResources/jnlp/music/" href="ABCPlayer.jnlp">
+
+    <!--
+        Provides a description of this World Wind demo application.
+    -->
+    <information>
+        <title>ABC Music Player Demo</title>
+        <vendor>Dr. Stephen Wong, Rice CS Dept.</vendor>
+        <homepage href="https://www.clear.rice.edu/comp310/JavaResources"/>
+        <!--<offline-allowed/>-->
+    </information>
+
+    <!--
+        Requests a trusted application environment. 
+    --><!--
+    <security>
+        <all-permissions/>
+    </security>
+-->
+    <!--
+        Specifies the resources required by the  application:
+        * Java Runtime Environment version 1.7 or newer, with a maximum heap size of at least 1024 MB. 
+    -->
+    <resources>
+        <java version="1.8+" max-heap-size="1024m"/>
+		<jar href="ABCPlayer.jar"/>
+    </resources>
+
+    <!--
+        Indicates that this Java Web Start file describes an application. No main-class attribute is needed 
+		if the jar's manifest already has that information. 
+    -->
+    <application-desc/>
+
+</jnlp>

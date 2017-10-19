@@ -1,0 +1,62 @@
+package model;
+
+import provided.abcParser.ABCParser;
+import provided.music.APhraseVisitor;
+import provided.music.IPhrase;
+import provided.music.IPhraseVisitor;
+import provided.music.IPhraseVisitorCmd;
+import provided.music.NESeqList;
+import provided.util.ABCUtil;
+
+public class ABCPlayerModel {
+	
+	private IViewAdapter _viewAdapter;
+	private IPhrase parsedPhrase;
+	private static IPhraseVisitor _toStringAglo = new APhraseVisitor(new IPhraseVisitorCmd() {
+		
+		@Override
+		public Object apply(String id, IPhrase host, Object... params) {
+			return host.toString();
+		}
+	}) {
+		// initializer for anonymous inner class.
+		{
+			this.addCmd("NESeqList", new IPhraseVisitorCmd() {
+				@Override
+				public Object apply(String id, IPhrase host, Object... params) {
+					return ((NESeqList) host).getRest().execute(ABCPlayerModel._toStringAglo, params[0] + ", " + ((NESeqList) host).getFirst().toString());
+				}
+			});
+			this.addCmd("MTSeqList", new IPhraseVisitorCmd() {
+				@Override
+				public Object apply(String id, IPhrase host, Object... params) {
+					return params[0] + "}";
+				}
+			});
+		}
+	};
+	
+	public ABCPlayerModel(IViewAdapter _viewAdapter) {
+		this._viewAdapter = _viewAdapter;
+		NESeqList.setToStringAlgo(_toStringAglo);
+	}
+
+	public String loadFile(String fileName) {
+		return ABCUtil.Singleton.getFileContents(fixFileName(fileName));
+	}
+	
+	private String fixFileName(String fileName) {
+		return "/songs/" + fileName + ".abc";
+	}
+
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String parseFile(String fileName) {
+		ABCParser abcParser = new ABCParser(fixFileName(fileName));
+		parsedPhrase = abcParser.parse();
+		return parsedPhrase.toString();
+	}
+}

@@ -1,0 +1,230 @@
+package model;
+
+import provided.abcParser.ABCParser;
+import provided.music.APhraseVisitor;
+import provided.music.Chord;
+import provided.music.Header;
+import provided.music.IPhrase;
+import provided.music.IPhraseVisitor;
+import provided.music.IPhraseVisitorCmd;
+import provided.music.MTSeqList;
+import provided.music.NESeqList;
+import provided.music.Note;
+import provided.music.Triplet;
+import provided.player.ISequencePlayerStatus;
+import provided.player.SequencePlayer;
+import provided.util.ABCUtil;
+import provided.util.KeySignature;
+
+/**
+ * @author Yue Pan, Yang li
+ *
+ */
+public class ABCPlayerModel {
+	
+	private IViewAdapter _viewAdapter;
+	private IPhrase parsedPhrase;
+	private SequencePlayer sp;
+	
+	/**
+	 * The toString visitor to parse the music file
+	 */
+	private static APhraseVisitor _toStringAglo;
+	/**
+	 * The music play visitor to play the parsed the music file
+	 */
+	private APhraseVisitor _musicPlayAlgo;
+	
+	/**
+	 * @param _viewAdapter
+	 */
+	public ABCPlayerModel(IViewAdapter _viewAdapter) {
+		this._viewAdapter = _viewAdapter;
+		NESeqList.setToStringAlgo(_toStringAglo);
+		
+		
+		//tostring visitor
+		_toStringAglo = new APhraseVisitor(new IPhraseVisitorCmd() {
+			
+			@Override
+			public Object apply(String id, IPhrase host, Object... params) {
+				return host.toString();
+			}
+		}) {
+			// initializer for anonymous inner class.
+			{
+				this.addCmd("NESeqList", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return ((NESeqList) host).getRest().execute(ABCPlayerModel._toStringAglo, params[0] + ", " + ((NESeqList) host).getFirst().toString());
+					}
+				});
+				this.addCmd("MTSeqList", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return params[0] + "}";
+					}
+				});
+			}
+		};
+		
+		
+		/**
+		 * default cmd to play
+		 */
+		IPhraseVisitorCmd playDefaultCmd = new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return params[0];
+					}
+		};
+		
+		/**
+		 * music play visitor
+		 */
+		_musicPlayAlgo = new APhraseVisitor(playDefaultCmd) {
+					APhraseVisitor _musicPlayAlgo = this;
+					//Ignored header command
+					IPhraseVisitorCmd defaultHeaderCmd = new IPhraseVisitorCmd() {
+						@Override
+						public Object apply(String id, IPhrase host, Object... params) {
+							return params[0];
+						}
+					};
+					//init 
+					{
+						String headerString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+						for (int i = 0; i < headerString.length(); i++) {
+							addCmd("" + headerString.charAt(i), defaultHeaderCmd);
+						}
+						//add chord
+						_musicPlayAlgo.addCmd(Chord.ID, new IPhraseVisitorCmd() {
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								//SequencePlayer sp = (SequencePlayer) params[0];
+								Chord chord = (Chord) host;
+								int tick = (int) params[0];
+								Note[] notes = chord.getNotes();
+								for (Note note : notes) {
+									tick = (int) note.execute(_musicPlayAlgo, params[0]);
+								}
+								return tick;
+							}
+						});
+						// add triplet
+						_musicPlayAlgo.addCmd(Triplet.ID, new IPhraseVisitorCmd() {
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								//SequencePlayer sp = (SequencePlayer) params[0];
+								Triplet triplet = (Triplet) host;
+								int tick = (int) params[0];
+								Note[] notes = triplet.getNotes();
+								for (Note note : notes) {
+									tick = (int) note.execute(_musicPlayAlgo, params[0]);
+								}
+								return tick;
+							}
+						});
+						
+						//Header K
+						_musicPlayAlgo.addCmd("K", new IPhraseVisitorCmd() {
+
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								Header K = (Header) host;
+								KeySignature keySig = new KeySignature(K.getValue());
+								//Note case
+								_musicPlayAlgo.addCmd(Note.ID, new IPhraseVisitorCmd() {
+
+									@Override
+									public Object apply(String id, IPhrase host, Object... params) {
+
+										Note note = (Note) host;
+										Object tick = sp.addNote(keySig.adjust(note), (int) params[0]);
+										return tick;
+									}
+								});
+								return params[0];
+							}
+						});
+						//Header Q
+						_musicPlayAlgo.addCmd("Q", new IPhraseVisitorCmd() {
+
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								Header Q = (Header) host;
+								int tempo = (int) ABCUtil.Singleton.parseTempo(Q.getValue(),
+										(double) sp.getTicksPerQuarterNote() / sp.getTicksPerDefaultNote());
+								sp.setTempo(tempo);
+								return params[0];
+							}
+						});
+						//Non-empty case
+						_musicPlayAlgo.addCmd(NESeqList.ID, new IPhraseVisitorCmd() {
+
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								NESeqList NEhost = (NESeqList) host;
+								Object tick = NEhost.getFirst().execute(_musicPlayAlgo, params[0]);
+								return NEhost.getRest().execute(_musicPlayAlgo, tick);
+							}
+						});
+						//Empty case
+						_musicPlayAlgo.addCmd(MTSeqList.ID, new IPhraseVisitorCmd() {
+
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								sp.play(ISequencePlayerStatus.NULL);
+								return params[0];
+							}
+						});
+						
+					}
+		};
+	}
+
+
+	/**
+	 * @param fileName
+	 * @return string of the filename
+	 */
+	public String loadFile(String fileName) {
+		return ABCUtil.Singleton.getFileContents(fixFileName(fileName));
+	}
+	
+	private String fixFileName(String fileName) {
+		return "/songs/" + fileName + ".abc";
+	}
+
+	public void start() {
+		// TODO Auto-generated method stub
+		sp = new SequencePlayer(16, 0);
+		
+	}
+
+	/**
+	 * @param fileName
+	 * @return
+	 */
+	public String parseFile(String fileName) {
+		ABCParser abcParser = new ABCParser(fixFileName(fileName));
+		parsedPhrase = abcParser.parse();
+		return parsedPhrase.toString();
+	}
+
+	/**
+	 *  function to play the music
+	 */
+	public void play() {
+		sp = new SequencePlayer(16, 0);
+		sp.setTicksPerDefaultNote(16);  // 16 = ticks per DEFAULT note
+		sp.setTempo(100);   // 140 quarter notes (beats) per minute
+		parsedPhrase.execute(_musicPlayAlgo, 1);
+	}
+
+	public void stop() {
+		// TODO Auto-generated method stub
+		sp.stop();
+		
+	}
+}

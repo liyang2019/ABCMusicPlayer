@@ -1,0 +1,25 @@
+package model;
+
+import provided.util.ABCUtil;
+
+public class ABCPlayerModel {
+	
+	private IViewAdapter _viewAdapter;
+	
+	public ABCPlayerModel(IViewAdapter _viewAdapter) {
+		this._viewAdapter = _viewAdapter;
+	}
+	
+	public String loadFile(String fileName) {
+		return ABCUtil.Singleton.getFileContents(fixFileName(fileName));
+	}
+	
+	private String fixFileName(String fileName) {
+		return "/songs/" + fileName + ".abc";
+	}
+
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+}

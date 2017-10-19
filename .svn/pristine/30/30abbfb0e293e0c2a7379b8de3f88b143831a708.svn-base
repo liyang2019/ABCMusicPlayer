@@ -1,0 +1,255 @@
+package model;
+
+import provided.abcParser.ABCParser;
+import provided.music.APhraseVisitor;
+import provided.music.Chord;
+import provided.music.Header;
+import provided.music.IPhrase;
+import provided.music.IPhraseVisitor;
+import provided.music.IPhraseVisitorCmd;
+import provided.music.NESeqList;
+import provided.music.Note;
+import provided.music.Triplet;
+import provided.player.ISequencePlayerStatus;
+import provided.player.SequencePlayer;
+import provided.util.ABCUtil;
+import provided.util.KeySignature;
+
+public class ABCPlayerModel {
+	
+	private IViewAdapter _viewAdapter;
+	private IPhrase parsedPhrase;
+	private SequencePlayer sp;
+	
+	/**
+	 * The toString visitor to parse the music file
+	 */
+	private static APhraseVisitor _toStringAglo;
+	/**
+	 * The music play visitor to play the parsed the music file
+	 */
+	private APhraseVisitor _musicPlayAglo;
+	
+	/**
+	 * @param _viewAdapter
+	 */
+	public ABCPlayerModel(IViewAdapter _viewAdapter) {
+		this._viewAdapter = _viewAdapter;
+		NESeqList.setToStringAlgo(_toStringAglo);
+		// set default SequencePlayer.
+		sp = new SequencePlayer(16, 2);
+		sp.setTicksPerDefaultNote(16);  // 16 = ticks per DEFAULT note
+		sp.setTempo(100);   // 140 quarter notes (beats) per minute
+		
+		//tostring visitor
+		_toStringAglo = new APhraseVisitor(new IPhraseVisitorCmd() {
+			
+			@Override
+			public Object apply(String id, IPhrase host, Object... params) {
+				return host.toString();
+			}
+		}) {
+			// initializer for anonymous inner class.
+			{
+				this.addCmd("NESeqList", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return ((NESeqList) host).getRest().execute(ABCPlayerModel._toStringAglo, params[0] + ", " + ((NESeqList) host).getFirst().toString());
+					}
+				});
+				this.addCmd("MTSeqList", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return params[0] + "}";
+					}
+				});
+			}
+		};
+		
+		
+		/**
+		 * default cmd to play
+		 */
+		IPhraseVisitorCmd playDefaultCmd = new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						return params[0];
+					}
+		};
+		
+		/**
+		 * music play visitor
+		 */
+		_musicPlayAglo = new APhraseVisitor(playDefaultCmd) {
+					APhraseVisitor _musicPlayAglo = this;
+					//Ignored header command
+					IPhraseVisitorCmd defaultHeaderCmd = new IPhraseVisitorCmd() {
+						@Override
+						public Object apply(String id, IPhrase host, Object... params) {
+							return params[0];
+						}
+					};
+					//init 
+					{
+						String headerString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+						for (int i = 0; i < headerString.length(); i++) {
+							addCmd("" + headerString.charAt(i), defaultHeaderCmd);
+						}
+						//add chord
+						_musicPlayAglo.addCmd(Chord.ID, new IPhraseVisitorCmd() {
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								//SequencePlayer sp = (SequencePlayer) params[0];
+								Chord chord = (Chord) host;
+								int tick = (int) params[0];
+								Note[] notes = chord.getNotes();
+								for (Note note : notes) {
+									tick = (int) note.execute(_musicPlayAglo, params[0]);
+								}
+								return tick;
+							}
+						});
+						_musicPlayAglo.addCmd(Triplet.ID, new IPhraseVisitorCmd() {
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								//SequencePlayer sp = (SequencePlayer) params[0];
+								Triplet triplet = (Triplet) host;
+								int tick = (int) params[0];
+								Note[] notes = triplet.getNotes();
+								for (Note note : notes) {
+									tick = (int) note.execute(_musicPlayAglo, params[0]);
+								}
+								return tick;
+							}
+						});
+						
+						//Header K
+						_musicPlayAglo.addCmd("K", new IPhraseVisitorCmd() {
+
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								Header K = (Header) host;
+								KeySignature keySig = new KeySignature(K.getValue());
+								//Note case
+								_musicPlayAglo.addCmd(Note.ID, new IPhraseVisitorCmd() {
+
+									@Override
+									public Object apply(String id, IPhrase host, Object... params) {
+
+										Note note = (Note) host;
+										Object tick = sp.addNote(keySig.adjust(note), (int) params[0]);
+										return tick;
+									}
+								});
+								return params[0];
+							}
+						});
+						//Header Q
+						_musicPlayAglo.addCmd("Q", new IPhraseVisitorCmd() {
+
+							@Override
+							public Object apply(String id, IPhrase host, Object... params) {
+								Header Q = (Header) host;
+								int tempo = (int) ABCUtil.Singleton.parseTempo(Q.getValue(),
+										(double) sp.getTicksPerQuarterNote() / sp.getTicksPerDefaultNote());
+								sp.setTempo(tempo);
+								return params[0];
+							}
+						});
+						
+					}
+		};
+	}
+
+
+	/**
+	 * @param fileName
+	 * @return string of the filename
+	 */
+	public String loadFile(String fileName) {
+		return ABCUtil.Singleton.getFileContents(fixFileName(fileName));
+	}
+	
+	private String fixFileName(String fileName) {
+		return "/songs/" + fileName + ".abc";
+	}
+
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String parseFile(String fileName) {
+		ABCParser abcParser = new ABCParser(fixFileName(fileName));
+		parsedPhrase = abcParser.parse();
+		return parsedPhrase.toString();
+	}
+
+	public void play() {
+		IPhrase note = new Note('G', 0, 0, 1, false);
+		IPhraseVisitor noteVisotor = new APhraseVisitor() {
+			{
+				this.addCmd("Note", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						SequencePlayer sp = (SequencePlayer) params[0];
+						sp.addNote((Note) host, 1);
+						sp.play(ISequencePlayerStatus.NULL);
+						return null;
+					}
+				});
+				this.addCmd("Triplet", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						SequencePlayer sp = (SequencePlayer) params[0];
+						Note[] notes = ((Triplet) host).getNotes();
+						int start = 1;
+						for (Note note : notes) {
+							start = sp.addNote(note, start);
+						}
+						sp.play(ISequencePlayerStatus.NULL);
+						return null;
+					}
+				});
+				this.addCmd("Chord", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						SequencePlayer sp = (SequencePlayer) params[0];
+						Note[] notes = ((Chord) host).getNotes();
+						for (Note note : notes) {
+							sp.addNote(note, 1);
+						}
+						sp.play(ISequencePlayerStatus.NULL);
+						return null;
+					}
+				});
+				this.addCmd("Chord", new IPhraseVisitorCmd() {
+					@Override
+					public Object apply(String id, IPhrase host, Object... params) {
+						SequencePlayer sp = (SequencePlayer) params[0];
+						Note[] notes = ((Chord) host).getNotes();
+						for (Note note : notes) {
+							sp.addNote(note, 1);
+						}
+						sp.play(ISequencePlayerStatus.NULL);
+						return null;
+					}
+				});
+			}
+		};
+//		note.execute(noteVisotor, sp);
+		
+		IPhrase triplet = new Triplet(
+				new Note('A', 0, 0, 1, false),
+				new Note('B', 0, 0, 1, false),
+				new Note('C', 0, 0, 1, false));
+		
+		triplet.execute(noteVisotor, sp);
+	}
+
+	public void stop() {
+		// TODO Auto-generated method stub
+		sp.stop();
+		
+	}
+}

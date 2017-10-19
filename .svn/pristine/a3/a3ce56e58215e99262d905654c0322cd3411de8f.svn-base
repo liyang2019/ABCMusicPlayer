@@ -1,0 +1,18 @@
+package visotor;
+
+import provided.music.IPhrase;
+import provided.music.IPhraseVisitor;
+
+public class ToStringAlgo implements IPhraseVisitor {
+	
+	public static final ToStringAlgo Singleton = new ToStringAlgo();
+    private ToStringAlgo() {
+    }
+
+	@Override
+	public Object caseAt(String id, IPhrase host, Object... params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

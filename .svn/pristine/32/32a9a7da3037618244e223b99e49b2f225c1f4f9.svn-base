@@ -1,0 +1,54 @@
+package controller;
+
+import java.awt.EventQueue;
+
+import javax.swing.WindowConstants;
+
+import model.ABCPlayerModel;
+import model.IViewAdapter;
+import view.ABCPlayerGUI;
+import view.IModelAdapter;
+
+public class ABCPlayerController {
+	
+	private ABCPlayerGUI view;
+	private ABCPlayerModel model;
+	
+	public ABCPlayerController() {
+		view = new ABCPlayerGUI(new IModelAdapter() {
+			
+			@Override
+			public String loadFile(String fileName) {
+				return model.loadFile(fileName);
+			}
+		});
+		
+		model = new ABCPlayerModel(new IViewAdapter() {
+			
+		});
+	}
+	
+	/**
+	 * Start the application
+	 */
+	public void start() {
+		model.start();
+		view.start();
+	}
+	
+	/**
+	 * Launch the application.   Sets the window closing behavior to WindowConstants.EXIT_ON_CLOSE
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					(new ABCPlayerController()).start();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+}

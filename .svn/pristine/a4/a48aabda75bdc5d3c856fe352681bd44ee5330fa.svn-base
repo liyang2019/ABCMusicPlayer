@@ -1,0 +1,125 @@
+package view;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+/**
+ * The ABC music player GUI.
+ * 
+ * @author Yang Li, Yue Pan
+ *
+ */
+public class ABCPlayerGUI extends JFrame {
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2716978961603836725L;
+
+	private IModelAdapter _modelAdapter;
+
+	private final JPanel contentPane = new JPanel();
+	private final JPanel pnlCtl = new JPanel();
+	private final JTextField txtInput = new JTextField();
+	private final JButton btnLoad = new JButton("Load");
+	private final JButton btnParse = new JButton("Parse");
+	private final JComboBox comboInstruments = new JComboBox();
+	private final JButton btnPlay = new JButton("Play");
+	
+	private final JSplitPane splitPane = new JSplitPane();
+	private final JScrollPane spFileContents = new JScrollPane();
+	private final JTextArea taFileContents = new JTextArea();
+	private final JScrollPane spParsedStructure = new JScrollPane();
+	private final JTextArea taParsedStructure = new JTextArea();
+
+
+	/**
+	 * Create the frame.
+	 * @param _modelAdapter view to model adapter.
+	 */
+	public ABCPlayerGUI(IModelAdapter _modelAdapter) {
+		this._modelAdapter = _modelAdapter;
+		initGUI();
+	}
+	
+	/**
+	 * Start the view, i.e. make it visible.
+	 */
+	public void start() {
+		setVisible(true);
+	}
+	
+	/**
+	 * Initialize the GUI components
+	 */
+	private void initGUI() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 300);
+
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		pnlCtl.setToolTipText("the controll panel");
+		getContentPane().add(pnlCtl, BorderLayout.NORTH);
+		
+		JLabel lblFile = new JLabel("File:");
+		pnlCtl.add(lblFile);
+		
+		txtInput.setText("music file name");
+		pnlCtl.add(txtInput);
+		txtInput.setColumns(10);
+		
+		btnLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				taFileContents.setText(_modelAdapter.loadFile(txtInput.getText()));
+			}
+		});
+		pnlCtl.add(btnLoad);
+		btnParse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				taParsedStructure.setText(_modelAdapter.parsePhrase(txtInput.getText()));
+			}
+		});
+		pnlCtl.add(btnParse);
+		pnlCtl.add(comboInstruments);
+		btnPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				_modelAdapter.play();
+			}
+		});
+		pnlCtl.add(btnPlay);
+		
+		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		splitPane.setResizeWeight(0.5);
+		contentPane.add(splitPane, BorderLayout.CENTER);
+		splitPane.setLeftComponent(spFileContents);
+		taFileContents.setLineWrap(true);
+		taFileContents.setWrapStyleWord(true);
+		spFileContents.setViewportView(taFileContents);
+		splitPane.setRightComponent(spParsedStructure);
+		taParsedStructure.setLineWrap(true);
+		taParsedStructure.setWrapStyleWord(true);
+		spParsedStructure.setViewportView(taParsedStructure);
+	}
+	
+//	// for testing
+//	public static void main(String[] args) {
+//		ABCPlayerGUI gui = new ABCPlayerGUI(null);
+//		gui.start();
+//	}
+
+}

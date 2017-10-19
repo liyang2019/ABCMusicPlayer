@@ -1,0 +1,31 @@
+package view;
+
+/**
+ * The view to model adapter.
+ * 
+ * @author Yang Li, Yue Pan
+ *
+ */
+public interface IModelAdapter {
+
+	/**
+	 * @param fileName fileName.abc is the ABC file name.
+	 * @return the string content of ABC file
+	 */
+	String loadFile(String fileName);
+
+	/**
+	 * parse the fileName.abc file and save the parsed IPharse object in model,
+	 * return the string representation of the parse IPharse object.
+	 * 
+	 * @param fileName fileName.abc is the ABC file name.
+	 * @return the string representation of parsed ABC file
+	 */
+	String parsePhrase(String fileName);
+
+	/**
+	 * play the parsed ABC music file.
+	 */
+	void play();
+
+}
